@@ -1,0 +1,23 @@
+
+
+14:24 - 15:24
+
+1. describe ec2: aws ec2 describe-images --filters "Name=description,Values=Amazon Linux AMI * x86_64 HVM GP2" 
+   --query 'Images[*].[CreationDate,Description,ImageId] ' --output text | sort -k 1 | tail
+2. select the latest ami - ami-51809835
+3. describe vpcs : aws ec2 describe-vpcs -  
+4. create security group: aws ec2 create-security-group --group-name HelloWorld --description "Hello World Demo" --vpc-id vpc-9fb824f7
+        sg-0be7dd0b5f782c16c"
+5. Run instance : aws ec2 run-instances --instance-type t2.micro --key-name drvishwas --security-group-ids sg-0be7dd0b5f782c16c --image-id ami-51809835
+    i-04bdf0ddccccbc2f2
+
+6. chmod of the pem file to 400 which is readonly and then: ssh -i ~/.ssh/drvishwas.pem ec2-user@ec2-18-130-227-161.eu-west-2.compute.amazonaws.com
+7. installing node.js on ec2: sudo yum install --enablerepo=epel -y nodejs
+8. install the code for the web application: wget https://raw.githubusercontent.com/yogeshraheja/Effective-DevOps-with-AWS/master/Chapter02/helloworld.js -O /home/ec2-user/helloworld.js
+9. setting up helloworld on bootup after the eni: sudo wget https://raw.githubusercontent.com/yogeshraheja/Effective-DevOps-with-AWS/master/Chapter02/helloworld.conf -O /etc/init/helloworld.conf
+
+
+17:16 - 18:16
+
+
+19:35 - 20:35
