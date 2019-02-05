@@ -2,19 +2,16 @@ resource "aws_instance" "web" {
     ami = "${var.ami_id}"
     instance_type = "${var.instance_type}"
     tags {
-        name = "theweb"
+        Name = "theweb"
         env = "${var.env}"
     }
    key_name = "drvishwas"
    security_groups = ["${aws_security_group.sgWeb.name}"]
-   user_data = <<-EOF
-              #!/bin/bash
-              sudo yum install -y nodejs --enablerepo=epel
-              wget http://bit.ly/2vESNuc -O /home/ec2-user/helloworld.js
-              wget http://bit.ly/2vVvT18 -O /etc/init/helloworld.conf
-              start helloworld
-              EOF
+   
 }
+
+
+
 
 resource "aws_security_group" "sgWeb" {
     name  = "sgWeb"

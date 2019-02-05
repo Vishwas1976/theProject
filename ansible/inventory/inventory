@@ -1,0 +1,11 @@
+[lin]
+3.8.98.229
+
+[win]
+35.177.84.4 
+
+[win:vars]
+ansible_user=vagrant
+ansible_password=password
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
