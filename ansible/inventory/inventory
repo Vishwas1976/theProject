@@ -1,11 +1,5 @@
-[lin]
-3.8.98.229
+[localhost]
+localhost ansible_connection=local 
 
-[win]
-35.177.84.4 
 
-[win:vars]
-ansible_user=vagrant
-ansible_password=password
-ansible_connection=winrm
-ansible_winrm_server_cert_validation=ignore
+ansible -m cron -a 'name=ansible-pull minute="*/10" job="/usr/bin/ansible-pull -U https://github.com/Vishwas1976/theProject/ansible helloworld.yml -i localhost --sleep 60"'  
